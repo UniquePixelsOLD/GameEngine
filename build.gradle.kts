@@ -4,9 +4,9 @@ plugins {
   id("xyz.jpenilla.run-paper") version "2.2.2" // Adds runServer and runMojangMappedServer tasks for testing
 }
 
-group = "io.papermc.paperweight"
-version = "1.0.0-SNAPSHOT"
-description = "Test plugin for paperweight-userdev"
+group = "net.uniquepixels.game"
+version = "1.0.0"
+description = "GameEngine for UniquePixels | Multi-Game Server"
 
 java {
   // Configure the java toolchain. This allows gradle to auto-provision JDK 17 on systems that only have JDK 8 installed for example.
@@ -15,8 +15,6 @@ java {
 
 dependencies {
   paperweight.paperDevBundle("1.20.4-R0.1-SNAPSHOT")
-  // paperweight.foliaDevBundle("1.20.4-R0.1-SNAPSHOT")
-  // paperweight.devBundle("com.example.paperfork", "1.20.4-R0.1-SNAPSHOT")
 }
 
 tasks {
@@ -49,11 +47,9 @@ tasks {
     }
   }
 
-  /*
   reobfJar {
     // This is an example of how you might change the output location for reobfJar. It's recommended not to do this
     // for a variety of reasons, however it's asked frequently enough that an example of how to do it is included here.
-    outputJar.set(layout.buildDirectory.file("libs/PaperweightTestPlugin-${project.version}.jar"))
+    outputJar.set(layout.buildDirectory.file("libs/GameEngine-${project.version}.jar"))
   }
-   */
 }
