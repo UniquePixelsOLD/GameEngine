@@ -13,8 +13,15 @@ java {
   toolchain.languageVersion.set(JavaLanguageVersion.of(17))
 }
 
+repositories {
+  mavenLocal()
+}
+
 dependencies {
   paperweight.paperDevBundle("1.20.4-R0.1-SNAPSHOT")
+
+  implementation("net.uniquepixels:core-api:latest")
+  implementation("net.uniquepixels:core:latest")
 }
 
 tasks {
