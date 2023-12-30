@@ -1,5 +1,7 @@
 package net.uniquepixels.game;
 
+import net.uniquepixels.core.paper.games.GameTypes;
+import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.World;
 
@@ -12,16 +14,27 @@ public abstract class Game {
   private final int maxPlayers;
   private final int minPlayers;
   private final int requiredPlayers;
+  private final Material uiItem;
+  private final GameTypes type;
   private final NamespacedKey gameKey;
   private int currentPlayers = 0;
   private GameState currentState = GameState.EMPTY;
   private GameState nextStep = GameState.AWAITING_PLAYERS;
-
-  public Game(int maxPlayers, int minPlayers, int requiredPlayers, NamespacedKey gameKey) {
+  public Game(int maxPlayers, int minPlayers, int requiredPlayers, Material uiItem, GameTypes type, NamespacedKey gameKey) {
     this.maxPlayers = maxPlayers;
     this.minPlayers = minPlayers;
     this.requiredPlayers = requiredPlayers;
+    this.uiItem = uiItem;
+    this.type = type;
     this.gameKey = gameKey;
+  }
+
+  public GameTypes getType() {
+    return type;
+  }
+
+  public Material getUiItem() {
+    return uiItem;
   }
 
   public GameState getCurrentState() {
