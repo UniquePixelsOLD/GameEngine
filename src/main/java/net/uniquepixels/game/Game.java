@@ -7,6 +7,7 @@ import org.bukkit.World;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public abstract class Game {
 
@@ -17,6 +18,7 @@ public abstract class Game {
   private final Material uiItem;
   private final GameTypes type;
   private final NamespacedKey gameKey;
+  private final UUID gameId;
   private int currentPlayers = 0;
   private GameState currentState = GameState.EMPTY;
   private GameState nextStep = GameState.AWAITING_PLAYERS;
@@ -27,6 +29,11 @@ public abstract class Game {
     this.uiItem = uiItem;
     this.type = type;
     this.gameKey = gameKey;
+    this.gameId = UUID.randomUUID();
+  }
+
+  public UUID getGameId() {
+    return gameId;
   }
 
   public GameTypes getType() {
