@@ -2,6 +2,7 @@ plugins {
   `java-library`
   id("io.papermc.paperweight.userdev") version "1.5.11"
   id("xyz.jpenilla.run-paper") version "2.2.2" // Adds runServer and runMojangMappedServer tasks for testing
+  id("maven-publish")
 }
 
 group = "net.uniquepixels.game"
@@ -22,6 +23,18 @@ dependencies {
 
   implementation("net.uniquepixels:core-api:latest")
   implementation("net.uniquepixels:core:latest")
+}
+
+publishing {
+  publications {
+    create<MavenPublication>("maven") {
+      groupId = "net.uniquepixels"
+      artifactId = "game-engine"
+      version = this.version
+
+      from(components["java"])
+    }
+  }
 }
 
 tasks {
