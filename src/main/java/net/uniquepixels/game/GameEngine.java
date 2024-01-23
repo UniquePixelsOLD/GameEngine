@@ -2,6 +2,7 @@ package net.uniquepixels.game;
 
 import net.uniquepixels.game.config.GameType;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -31,5 +32,18 @@ public class GameEngine extends JavaPlugin {
   @Override
   public void onDisable() {
 
+  }
+
+  public void hidePlayerFromOtherGames(Player player) {
+
+    for (Game<? extends JavaPlugin> activeGame : activeGames) {
+
+      if (!activeGame.getPlayers().contains(player))
+        activeGame.getPlayers().forEach(player1 -> {
+          player1.hidePlayer(this, player);
+          player.hidePlayer(this, player1);
+        });
+
+    }
   }
 }

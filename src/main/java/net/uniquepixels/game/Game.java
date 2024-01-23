@@ -5,6 +5,8 @@ import net.uniquepixels.game.exceptions.UnsupportedGameType;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.World;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
@@ -21,7 +23,8 @@ public abstract class Game<P extends JavaPlugin> {
   private final GameType type;
   private final NamespacedKey gameKey;
   private final UUID gameId;
-  private int currentPlayers = 0;
+  private final List<Player> players;
+  private final List<Entity> createdByGame;
   private GameState currentState = GameState.WAITING;
 
   public Game(Class<P> pluginClazz, int maxPlayers, int minPlayers, int requiredPlayers, Material uiItem, GameType type, NamespacedKey gameKey) throws UnsupportedGameType {
@@ -31,9 +34,15 @@ public abstract class Game<P extends JavaPlugin> {
     this.uiItem = uiItem;
     this.type = type;
     this.gameKey = gameKey;
+    this.createdByGame = new ArrayList<>();
     this.gameId = UUID.randomUUID();
+    this.players = new ArrayList<>();
 
     this.checkForGameType(pluginClazz);
+  }
+
+  public List<Entity> getCreatedByGame() {
+    return createdByGame;
   }
 
   private void checkForGameType(Class<P> pluginClazz) throws UnsupportedGameType {
@@ -70,12 +79,8 @@ public abstract class Game<P extends JavaPlugin> {
     return type;
   }
 
-  public int getCurrentPlayers() {
-    return currentPlayers;
-  }
-
-  void setCurrentPlayers(int newValue) {
-    this.currentPlayers = newValue;
+  public List<Player> getPlayers() {
+    return players;
   }
 
   public int getMaxPlayers() {

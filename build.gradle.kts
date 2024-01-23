@@ -23,6 +23,7 @@ dependencies {
 
   implementation("net.uniquepixels:core-api:latest")
   implementation("net.uniquepixels:core:latest")
+  implementation("redis.clients:jedis:4.3.1")
 }
 
 publishing {
