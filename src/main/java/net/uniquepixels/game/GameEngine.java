@@ -1,6 +1,8 @@
 package net.uniquepixels.game;
 
+import net.uniquepixels.game.communication.Communicator;
 import net.uniquepixels.game.config.GameType;
+import net.uniquepixels.game.playersync.PlayerInGame;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
@@ -27,6 +29,11 @@ public class GameEngine extends JavaPlugin {
   @Override
   public void onEnable() {
     PluginManager pm = Bukkit.getPluginManager();
+
+    Communicator communicator = new Communicator();
+
+    pm.registerEvents(new PlayerInGame(communicator), this);
+
   }
 
   @Override
