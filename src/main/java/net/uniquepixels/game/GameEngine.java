@@ -10,9 +10,9 @@ import java.util.List;
 
 public class GameEngine extends JavaPlugin {
 
-  private final List<Game> activeGames = new ArrayList<>();
+  private final List<Game<? extends JavaPlugin>> activeGames = new ArrayList<>();
 
-  public List<Game> getActiveGames() {
+  public List<Game<? extends JavaPlugin>> getActiveGames() {
     return activeGames;
   }
 
