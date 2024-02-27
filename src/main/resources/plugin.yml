@@ -1,8 +1,9 @@
-name: $name
+name: GameEngine
 version: $version
-main: io.papermc.paperweight.testplugin.TestPlugin
+main: net.uniquepixels.game.GameEngine
 description: $description
-load: STARTUP
-authors:
-  - Author
+authors: [ DasShorty ]
+depend: [ PaperCore ]
 api-version: "$apiVersion"
+commands:
+  start:

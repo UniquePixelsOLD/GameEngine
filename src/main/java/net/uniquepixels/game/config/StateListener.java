@@ -20,9 +20,9 @@ public class StateListener implements Listener {
 
   private void handle(Cancellable cancellable, BlockState state) {
     switch (this.game.getCurrentState()) {
-      case WAITING -> cancellable.setCancelled(!this.game.onWaitingState().isBlocked(state));
-      case ENDING -> cancellable.setCancelled(!this.game.onEndingState().isBlocked(state));
-      case RUNNING -> cancellable.setCancelled(!this.game.onRunningState().isBlocked(state));
+      case WAITING -> cancellable.setCancelled(this.game.onWaitingState().isBlocked(state));
+      case ENDING -> cancellable.setCancelled(this.game.onEndingState().isBlocked(state));
+      case RUNNING -> cancellable.setCancelled(this.game.onRunningState().isBlocked(state));
     }
   }
   @EventHandler

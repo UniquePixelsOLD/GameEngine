@@ -36,6 +36,16 @@ publishing {
       from(components["java"])
     }
   }
+  repositories {
+    maven {
+      name = "UniquePixels"
+      url = uri("https://repo.dasshorty.de/repository/minecraft")
+      credentials {
+        username = "projectwizard"
+        password = System.getenv("UP_NEXUS_PASSWORD")
+      }
+    }
+  }
 }
 
 tasks {
