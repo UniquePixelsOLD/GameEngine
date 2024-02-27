@@ -15,7 +15,12 @@ java {
 }
 
 repositories {
-  mavenLocal()
+  maven("https://repo.uniquepixels.net/repository/minecraft") {
+    credentials {
+      username = "projectwizard"
+      password = System.getenv("UP_NEXUS_PASSWORD")
+    }
+  }
 }
 
 dependencies {
@@ -39,7 +44,7 @@ publishing {
   repositories {
     maven {
       name = "UniquePixels"
-      url = uri("https://repo.dasshorty.de/repository/minecraft")
+      url = uri("https://repo.uniquepixels.net/repository/minecraft")
       credentials {
         username = "projectwizard"
         password = System.getenv("UP_NEXUS_PASSWORD")
@@ -81,6 +86,6 @@ tasks {
   reobfJar {
     // This is an example of how you might change the output location for reobfJar. It's recommended not to do this
     // for a variety of reasons, however it's asked frequently enough that an example of how to do it is included here.
-    outputJar.set(layout.buildDirectory.file("libs/GameEngine-${project.version}.jar"))
+    outputJar.set(layout.buildDirectory.file("dist/GameEngine-${project.version}.jar"))
   }
 }
